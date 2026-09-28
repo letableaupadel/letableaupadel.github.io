@@ -1,0 +1,35 @@
+:root {
+  --fond: #11251f;
+  --carte: #183229;
+  --trait: rgba(241, 244, 238, 0.14);
+  --craie: #f1f4ee;
+  --craie-2: rgba(241, 244, 238, 0.7);
+  --jaune: #e4ff3a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 0%, #1d3d33 0%, #11251f 55%, #0a1512 100%) fixed;
+  color: var(--craie);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+  line-height: 1.6;
+}
+main { max-width: 760px; margin: 0 auto; padding: 40px 16px 64px; }
+header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+header img { width: 56px; height: 56px; border-radius: 12px; }
+header a { color: var(--craie); text-decoration: none; font-weight: 800; font-size: 20px; letter-spacing: .02em; }
+h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+h1 span { color: var(--jaune); }
+h2 { font-size: 17px; margin: 28px 0 6px; }
+p, li { color: var(--craie-2); }
+a { color: var(--jaune); }
+.carte { background: var(--carte); border: 1px solid var(--trait); border-radius: 14px; padding: 18px 20px; margin: 20px 0; }
+.liens { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.bouton { display: inline-block; background: var(--jaune); color: #05090a; font-weight: 800; text-decoration: none;
+  padding: 10px 18px; border-radius: 999px; border: 0; font-size: 15px; cursor: pointer; }
+.bouton.secondaire { background: transparent; color: var(--craie); border: 1px solid var(--trait); }
+code.jeton { display: block; word-break: break-all; background: #0a1512; border: 1px solid var(--trait); border-radius: 10px;
+  padding: 12px 14px; color: var(--craie); font-size: 14px; margin: 12px 0; }
+footer { margin-top: 40px; font-size: 13px; color: var(--craie-2); border-top: 1px solid var(--trait); padding-top: 16px; }
+footer a { color: var(--craie-2); margin-right: 14px; }

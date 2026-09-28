@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion TikTok — Le Tableau Padel</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header><img src="logo.png" alt=""><a href="./">LE TABLEAU PADEL</a></header>
+  <h1>Connexion <span>TikTok</span></h1>
+  <div class="carte" id="ok" hidden>
+    <p><b>TikTok a bien autorisé l'appli.</b> Dernière étape : copie l'adresse ci-dessous et colle-la dans le formulaire
+    n8n « Connecter TikTok », puis valide. Fais-le dans les 5 minutes : le code expire vite.</p>
+    <code class="jeton" id="adresse"></code>
+    <div class="liens">
+      <button class="bouton" id="copier">Copier l'adresse</button>
+      <a class="bouton secondaire" href="http://localhost:5678/form/connexion-tiktok" target="_blank">Ouvrir le formulaire n8n</a>
+    </div>
+  </div>
+  <div class="carte" id="erreur" hidden>
+    <p><b>La connexion n'a pas abouti.</b> <span id="detail"></span></p>
+    <p>Recommence depuis le formulaire n8n « Connecter TikTok ».</p>
+  </div>
+  <div class="carte" id="vide">
+    <p>Cette page reçoit le retour de TikTok lors de la connexion de l'outil de statistiques du Tableau Padel.
+    Elle n'enregistre rien : elle affiche seulement le code de connexion pour que l'éditeur le copie.</p>
+  </div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    if (q.get('code')) {
+      document.getElementById('vide').hidden = true;
+      document.getElementById('ok').hidden = false;
+      document.getElementById('adresse').textContent = location.href;
+      document.getElementById('copier').onclick = async () => {
+        try { await navigator.clipboard.writeText(location.href); document.getElementById('copier').textContent = 'Copié ✓'; }
+        catch (e) { getSelection().selectAllChildren(document.getElementById('adresse')); }
+      };
+    } else if (q.get('error')) {
+      document.getElementById('vide').hidden = true;
+      document.getElementById('erreur').hidden = false;
+      document.getElementById('detail').textContent = q.get('error_description') || q.get('error');
+    }
+  </script>
+  <footer>
+    <a href="./">Accueil</a><a href="conditions.html">Conditions d'utilisation</a><a href="confidentialite.html">Confidentialité</a>
+    <br>Contact : <a href="mailto:letableaupadel@gmail.com">letableaupadel@gmail.com</a>
+  </footer>
+</main>
+</body>
+</html>
